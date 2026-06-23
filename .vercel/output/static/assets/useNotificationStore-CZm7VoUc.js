@@ -1,0 +1,1 @@
+import{c as e}from"./react-xYnWR06h.js";const g=e(i=>({billingBadgeCount:0,incrementBillingBadge:()=>i(n=>({billingBadgeCount:n.billingBadgeCount+1})),clearBillingBadge:()=>i({billingBadgeCount:0})}));export{g as u};
