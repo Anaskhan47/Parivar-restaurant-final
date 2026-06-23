@@ -9,6 +9,12 @@ import { useReactToPrint } from 'react-to-print';
 import { KitchenTicket } from '@/components/billing/KitchenTicket';
 
 export const Route = createFileRoute('/checkout')({
+  head: () => ({
+    meta: [
+      { title: "Checkout | Parivar Restaurant" },
+      { name: "description", content: "Complete your order at Parivar Restaurant." },
+    ],
+  }),
   component: CheckoutPage,
 });
 

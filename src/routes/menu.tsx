@@ -14,6 +14,12 @@ export const Route = createFileRoute("/menu")({
       category: (search.category as string) || undefined,
     };
   },
+  head: () => ({
+    meta: [
+      { title: "Menu | Parivar Restaurant" },
+      { name: "description", content: "Explore the authentic Indian and Hyderabadi menu at Parivar Restaurant in Sydney. Delicious biryani, curries, and tandoori." },
+    ],
+  }),
   component: MenuPage,
 });
 

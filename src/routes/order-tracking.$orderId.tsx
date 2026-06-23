@@ -10,6 +10,12 @@ import { PostOrderAddOns } from '@/components/PostOrderAddOns';
 import { InvoicePreview } from '@/components/billing/InvoicePreview';
 
 export const Route = createFileRoute('/order-tracking/$orderId')({
+  head: () => ({
+    meta: [
+      { title: "Track Order | Parivar Restaurant" },
+      { name: "description", content: "Track the status of your Parivar Restaurant order." },
+    ],
+  }),
   component: OrderTrackingPage,
 });
 
@@ -415,7 +421,7 @@ function OrderTrackingPage() {
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <div className="overflow-y-auto p-4 sm:p-6 bg-gray-50/50 flex justify-center">
+              <div className="overflow-y-auto p-4 sm:p-6 bg-gray-50/50 flex justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 <div className="w-full bg-white shadow-sm border rounded-xl overflow-hidden scale-[0.85] sm:scale-100 origin-top">
                   <InvoicePreview
                     orderType={order.order_type || order.type}

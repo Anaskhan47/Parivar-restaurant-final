@@ -25,6 +25,30 @@ export const Route = createFileRoute("/")({
         content: "Authentic Hyderabadi luxury dining in Sydney. Dine in, take away, or book catering.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          "name": "Parivar Restaurant",
+          "image": "https://parivar-restaurant.com/logo.png",
+          "@id": "https://parivar-restaurant.com",
+          "url": "https://parivar-restaurant.com",
+          "telephone": "+61 2 1234 5678",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Sydney Street",
+            "addressLocality": "Sydney",
+            "addressRegion": "NSW",
+            "postalCode": "2000",
+            "addressCountry": "AU"
+          },
+          "servesCuisine": ["Indian", "Hyderabadi"],
+          "priceRange": "$$"
+        })
+      }
+    ],
   }),
   component: Index,
 });
