@@ -4,13 +4,13 @@ import shutil
 from pathlib import Path
 
 # Add backend directory to Python path so it can find app.* modules
-backend_dir = Path(__file__).parent.parent / "backend"
+backend_dir = Path(__file__).parent / "backend"
 sys.path.append(str(backend_dir))
 
 # Vercel Serverless File System is Read-Only.
 # We must copy the SQLite database to /tmp to allow writes (like booking a table).
 # Note: Data will NOT persist across cold starts in serverless environments.
-db_source = Path(__file__).parent.parent / "parivar.db"
+db_source = Path(__file__).parent / "parivar.db"
 db_target = Path("/tmp/parivar.db")
 
 if not db_target.exists() and db_source.exists():
