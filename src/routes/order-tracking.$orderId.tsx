@@ -421,8 +421,8 @@ function OrderTrackingPage() {
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <div className="overflow-y-auto p-4 sm:p-6 bg-gray-50/50 flex justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                <div className="w-full bg-white shadow-sm border rounded-xl overflow-hidden scale-[0.85] sm:scale-100 origin-top">
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-gray-50/50 flex justify-center">
+                <div className="w-full bg-white shadow-sm border rounded-xl overflow-hidden scale-[0.85] sm:scale-100 origin-top h-fit">
                   <InvoicePreview
                     orderType={order.order_type || order.type}
                     paymentMethod={order.payment?.method || 'CARD'}
