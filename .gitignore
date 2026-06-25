@@ -41,3 +41,4 @@ dist-ssr
 parivar.db
 backend/venv
 node_modules
+.vercel
