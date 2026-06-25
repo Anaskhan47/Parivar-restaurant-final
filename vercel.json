@@ -4,7 +4,7 @@
   "framework": "vite",
   "functions": {
     "api/**/*.py": {
-      "includeFiles": "{backend/**,parivar.db}"
+      "includeFiles": ["backend/**", "parivar.db"]
     }
   },
   "rewrites": [

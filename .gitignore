@@ -38,7 +38,6 @@ dist-ssr
 *.sw?
 
 .workspace/
-parivar.db
 backend/venv
 node_modules
 .vercel
