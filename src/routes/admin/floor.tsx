@@ -26,7 +26,7 @@ function FloorPlan() {
   const { data: tables, isLoading } = useQuery({
     queryKey: ["tables"],
     queryFn: async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/tables`, {
+      const res = await fetch((import.meta.env.VITE_API_URL || "http://localhost:8000") + "/api/v1/tables", {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.json();
@@ -36,7 +36,7 @@ function FloorPlan() {
 
   const createTable = useMutation({
     mutationFn: async (data: { table_number: string; capacity: number }) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/tables`, {
+      const res = await fetch((import.meta.env.VITE_API_URL || "http://localhost:8000") + "/api/v1/tables", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function FloorPlan() {
 
   const deleteTable = useMutation({
     mutationFn: async (tableId: number) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/tables/${tableId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/tables/${tableId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

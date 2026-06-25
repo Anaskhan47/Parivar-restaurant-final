@@ -34,7 +34,7 @@ export function OrderableItemSection({ id, category, title, subtitle, fallbackIt
     const fetchItems = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu?category=${encodeURIComponent(category)}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/menu?category=${encodeURIComponent(category)}`);
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
         const available = (data || []).filter((item: Item) => item.is_available !== false);

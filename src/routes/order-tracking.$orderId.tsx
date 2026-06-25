@@ -32,7 +32,7 @@ function OrderTrackingPage() {
   const { data: order, isLoading, error } = useQuery({
     queryKey: ['order-tracking', orderId],
     queryFn: async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/orders/${orderId}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/orders/${orderId}`);
       if (!res.ok) throw new Error('Failed to fetch order details');
       return res.json();
     },
@@ -46,7 +46,7 @@ function OrderTrackingPage() {
     let reconnectTimeout: ReturnType<typeof setTimeout>;
 
     const connect = () => {
-      socket = new WebSocket(`${import.meta.env.VITE_WS_URL || 'ws://localhost:8000'}/ws`);
+      socket = new WebSocket((import.meta.env.VITE_WS_URL || 'ws://localhost:8000') + '/ws');
       
       socket.onopen = () => {
         console.log('WS tracking connected');
@@ -373,7 +373,7 @@ function OrderTrackingPage() {
                         onClick={async () => {
                           setPaymentFlowState('WAITING_CASHIER');
                           try {
-                            await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/payments/order/${order.id}/request-counter-payment`, { method: 'POST' });
+                            await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/payments/order/${order.id}/request-counter-payment`, { method: 'POST' });
                           } catch (err) {
                             console.error('Failed to request counter payment', err);
                           }

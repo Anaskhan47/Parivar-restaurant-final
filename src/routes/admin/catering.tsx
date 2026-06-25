@@ -28,7 +28,7 @@ function CateringManagement() {
   const { data: requests, isLoading } = useQuery({
     queryKey: ["catering-requests"],
     queryFn: async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/catering/`, {
+      const res = await fetch((import.meta.env.VITE_API_URL || "http://localhost:8000") + "/api/v1/catering/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch catering requests");
@@ -39,7 +39,7 @@ function CateringManagement() {
 
   const updateStatus = useMutation({
     mutationFn: async ({ id, status }: { id: number; status: string }) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/catering/${id}/status`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/catering/${id}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function CateringManagement() {
 
   const deleteRequest = useMutation({
     mutationFn: async (id: number) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/catering/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/catering/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -47,7 +47,7 @@ function BillingPayments() {
   const { data: orders, isLoading } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/orders`, {
+      const res = await fetch((import.meta.env.VITE_API_URL || "http://localhost:8000") + "/api/v1/orders", {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.json();
@@ -57,7 +57,7 @@ function BillingPayments() {
 
   const generateBill = useMutation({
     mutationFn: async (orderId: number) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/payments/bills`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/payments/bills`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function BillingPayments() {
 
   const sendBill = useMutation({
     mutationFn: async (orderId: number) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/payments/bills/order/${orderId}/send`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/payments/bills/order/${orderId}/send`, {
         method: 'POST',
         headers: { 
           Authorization: `Bearer ${token}` 
@@ -99,7 +99,7 @@ function BillingPayments() {
 
   const completePayment = useMutation({
     mutationFn: async ({ orderId, amount, method }: { orderId: number, amount: number, method: string }) => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/payments`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/payments`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

@@ -32,7 +32,7 @@ export function ImageUploadField({ value, onChange, label = "Dish Image" }: Imag
       const formData = new FormData();
       formData.append("file", file);
       const token = localStorage.getItem("parivar_admin_token");
-      const res = await axios.post(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/uploads/`, formData, {
+      const res = await axios.post((import.meta.env.VITE_API_URL || "http://localhost:8000") + "/api/v1/uploads/", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

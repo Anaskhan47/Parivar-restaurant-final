@@ -103,7 +103,7 @@ function MenuPage() {
     const fetchMenu = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu?category=${activeCategory}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL || (import.meta.env.VITE_API_URL || "http://localhost:8000") + ""}/api/v1/menu?category=${activeCategory}`);
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();
         
