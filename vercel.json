@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build && rm -rf node_modules \"Menu images\"",
+  "buildCommand": "mkdir -p ~/.config/uv && echo '[pip]' > ~/.config/uv/uv.toml && echo 'link-mode = \"copy\"' >> ~/.config/uv/uv.toml && npm run build && rm -rf node_modules \"Menu images\"",
   "installCommand": "npm install --legacy-peer-deps",
   "framework": "vite",
   "rewrites": [
