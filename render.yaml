@@ -17,7 +17,7 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: 10080
       - key: CORS_ORIGINS
-        value: https://parivar.vercel.app
+        value: https://parivar-rest.vercel.app,https://parivar.vercel.app,http://localhost:5173
 
 databases:
   - name: parivar-db
