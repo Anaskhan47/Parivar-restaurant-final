@@ -26,7 +26,7 @@ function AdminUsersPage() {
     queryKey: ['admin-users'],
     queryFn: async () => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.get('http://localhost:8000/api/v1/users/', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/users/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -36,7 +36,7 @@ function AdminUsersPage() {
   const createMutation = useMutation({
     mutationFn: async (newUser: any) => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.post('http://localhost:8000/api/v1/users/', newUser, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/users/`, newUser, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -51,7 +51,7 @@ function AdminUsersPage() {
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number, data: any }) => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.put(`http://localhost:8000/api/v1/users/${id}`, data, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/users/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -67,7 +67,7 @@ function AdminUsersPage() {
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
       const token = localStorage.getItem('parivar_admin_token');
-      await axios.delete(`http://localhost:8000/api/v1/users/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
     },

@@ -39,7 +39,7 @@ export function PostOrderAddOns({ orderId, disabled, onItemsAdded }: PostOrderAd
     const fetchAddons = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:8000/api/v1/menu?category=${encodeURIComponent("Add-ons")}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu?category=${encodeURIComponent("Add-ons")}`);
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
         const available = (data || []).filter((item: AddonItem) => item.is_available !== false);
@@ -60,7 +60,7 @@ export function PostOrderAddOns({ orderId, disabled, onItemsAdded }: PostOrderAd
     setAddingId(itemId);
     setAddedId(null);
     try {
-      const res = await fetch(`http://localhost:8000/api/v1/orders/${orderId}/items`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/orders/${orderId}/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -27,7 +27,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const { data: tables } = useQuery({
     queryKey: ["tables-public"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/api/v1/tables");
+      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/tables`);
       return res.json();
     },
     enabled: isOpen,
@@ -49,7 +49,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             items: items.map(i => ({ menu_item_id: i.id, quantity: i.quantity, special_notes: i.notes || "" }))
           };
 
-      const res = await fetch("http://localhost:8000/api/v1/orders", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

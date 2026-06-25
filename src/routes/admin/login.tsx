@@ -26,7 +26,7 @@ function AdminLogin() {
       formData.append("username", username);
       formData.append("password", password);
 
-      const response = await fetch("http://localhost:8000/api/v1/auth/login", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -41,7 +41,7 @@ function AdminLogin() {
       }
 
       // Fetch user profile
-      const profileResponse = await fetch("http://localhost:8000/api/v1/auth/me", {
+      const profileResponse = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/auth/me`, {
         headers: { Authorization: `Bearer ${data.access_token}` },
       });
       const userData = await profileResponse.json();

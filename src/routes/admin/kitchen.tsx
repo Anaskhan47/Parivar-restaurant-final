@@ -15,7 +15,7 @@ function KitchenDisplay() {
   const { data: queue, isLoading } = useQuery({
     queryKey: ["kitchen-queue"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/api/v1/kitchen/queue", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/kitchen/queue`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.json();
@@ -26,7 +26,7 @@ function KitchenDisplay() {
 
   const updateStatus = useMutation({
     mutationFn: async ({ orderId, status }: { orderId: number, status: string }) => {
-      const res = await fetch(`http://localhost:8000/api/v1/orders/${orderId}/status`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/orders/${orderId}/status`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',

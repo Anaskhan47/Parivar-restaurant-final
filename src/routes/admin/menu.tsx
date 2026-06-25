@@ -29,7 +29,7 @@ function AdminMenuPage() {
     queryKey: ['admin-menu-items'],
     queryFn: async () => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.get('http://localhost:8000/api/v1/menu/', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/menu/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -41,7 +41,7 @@ function AdminMenuPage() {
     queryKey: ['categories'],
     queryFn: async () => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.get('http://localhost:8000/api/v1/categories/', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/categories/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -57,7 +57,7 @@ function AdminMenuPage() {
   const createMutation = useMutation({
     mutationFn: async (newItem: any) => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.post('http://localhost:8000/api/v1/menu/', newItem, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/menu/`, newItem, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -72,7 +72,7 @@ function AdminMenuPage() {
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number, data: any }) => {
       const token = localStorage.getItem('parivar_admin_token');
-      const res = await axios.put(`http://localhost:8000/api/v1/menu/${id}`, data, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.data;
@@ -88,7 +88,7 @@ function AdminMenuPage() {
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
       const token = localStorage.getItem('parivar_admin_token');
-      await axios.delete(`http://localhost:8000/api/v1/menu/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
     },

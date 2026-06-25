@@ -23,7 +23,7 @@ function AdminCategoriesPage() {
   const { data: categories, isLoading } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:8000/api/v1/categories/', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/categories/`, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -32,7 +32,7 @@ function AdminCategoriesPage() {
 
   const createMutation = useMutation({
     mutationFn: async (payload: any) => {
-      const res = await axios.post('http://localhost:8000/api/v1/categories/', payload, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/categories/`, payload, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -46,7 +46,7 @@ function AdminCategoriesPage() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number; data: any }) => {
-      const res = await axios.put(`http://localhost:8000/api/v1/categories/${id}`, data, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/categories/${id}`, data, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -61,7 +61,7 @@ function AdminCategoriesPage() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
-      await axios.delete(`http://localhost:8000/api/v1/categories/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/categories/${id}`, {
         headers: { Authorization: `Bearer ${token()}` },
       });
     },

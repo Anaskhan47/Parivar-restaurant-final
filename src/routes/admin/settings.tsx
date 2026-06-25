@@ -30,7 +30,7 @@ function SettingsPage() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch('http://localhost:8000/api/v1/users/me/password', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/users/me/password`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const storedToken = localStorage.getItem("parivar_admin_token");
     if (storedToken) {
       // Validate token by fetching me
-      fetch("http://localhost:8000/api/v1/auth/me", {
+      fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/auth/me`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
         .then((res) => {

@@ -37,7 +37,7 @@ export function CategoryItemsAdmin({ categoryName, title, description, queryKey 
   const { data: categories } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:8000/api/v1/categories/', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/categories/`, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -59,7 +59,7 @@ export function CategoryItemsAdmin({ categoryName, title, description, queryKey 
   const { data: sourceCategoryItems } = useQuery({
     queryKey: ['source-category-items', sourceCategory],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:8000/api/v1/menu?category=${encodeURIComponent(sourceCategory)}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu?category=${encodeURIComponent(sourceCategory)}`, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -76,7 +76,7 @@ export function CategoryItemsAdmin({ categoryName, title, description, queryKey 
   const { data: items, isLoading } = useQuery({
     queryKey: [queryKey],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:8000/api/v1/menu?category=${encodeURIComponent(categoryName)}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu?category=${encodeURIComponent(categoryName)}`, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -86,7 +86,7 @@ export function CategoryItemsAdmin({ categoryName, title, description, queryKey 
 
   const createMutation = useMutation({
     mutationFn: async (newItem: any) => {
-      const res = await axios.post('http://localhost:8000/api/v1/menu/', newItem, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/menu/`, newItem, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -104,7 +104,7 @@ export function CategoryItemsAdmin({ categoryName, title, description, queryKey 
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number; data: any }) => {
-      const res = await axios.put(`http://localhost:8000/api/v1/menu/${id}`, data, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu/${id}`, data, {
         headers: { Authorization: `Bearer ${token()}` },
       });
       return res.data;
@@ -123,7 +123,7 @@ export function CategoryItemsAdmin({ categoryName, title, description, queryKey 
 
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
-      await axios.delete(`http://localhost:8000/api/v1/menu/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/menu/${id}`, {
         headers: { Authorization: `Bearer ${token()}` },
       });
     },

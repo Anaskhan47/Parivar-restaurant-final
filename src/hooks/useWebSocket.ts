@@ -16,7 +16,7 @@ export function useWebSocket() {
       if (ws.current?.readyState === WebSocket.OPEN || isConnecting.current) return;
       isConnecting.current = true;
       
-      const socket = new WebSocket('ws://localhost:8000/ws');
+      const socket = new WebSocket(`${import.meta.env.VITE_WS_URL || 'ws://localhost:8000'}/ws`);
       ws.current = socket;
 
       socket.onopen = () => {

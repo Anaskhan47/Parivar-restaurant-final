@@ -22,7 +22,7 @@ function AdminDashboard() {
 
   const updateStatus = useMutation({
     mutationFn: async ({ orderId, status }: { orderId: number; status: string }) => {
-      const res = await fetch(`http://localhost:8000/api/v1/orders/${orderId}/status`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`}/api/v1/orders/${orderId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -200,7 +200,7 @@ function AdminDashboard() {
   const { data: tables } = useQuery({
     queryKey: ["tables"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/api/v1/tables", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/tables`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.json();
@@ -211,7 +211,7 @@ function AdminDashboard() {
   const { data: orders } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/api/v1/orders", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || \`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}\`}/api/v1/orders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return res.json();
