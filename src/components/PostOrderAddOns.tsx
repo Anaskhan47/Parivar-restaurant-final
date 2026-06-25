@@ -116,7 +116,7 @@ export function PostOrderAddOns({ orderId, disabled, onItemsAdded }: PostOrderAd
               >
                 <div className="w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-gold/10">
                   <img
-                    src={item.image_url || item.img}
+                    src={resolveImageUrl(item.image_url || item.img, item.category?.name || "", item.name)}
                     alt={item.name}
                     className="w-full h-full object-cover"
                     loading="lazy"

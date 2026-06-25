@@ -1,3 +1,4 @@
+import { resolveImageUrl } from "@/utils/imageUrl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { X, Trash2, Plus, Minus, ShoppingBag } from "lucide-react";

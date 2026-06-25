@@ -83,7 +83,7 @@ export function OrderableItemSection({ id, category, title, subtitle, fallbackIt
                 >
                   <div className="h-44 overflow-hidden relative">
                     <img
-                      src={item.image_url || item.img}
+                      src={resolveImageUrl(item.image_url || item.img, item.category?.name || "", item.name)}
                       alt={item.name}
                       loading="lazy"
                       onError={(e) => {

@@ -167,7 +167,7 @@ function MenuPage() {
                 <div key={item.name} className="glass p-4 sm:p-6 rounded-2xl border border-gold/10 flex flex-col sm:flex-row gap-6 items-center sm:items-start hover:shadow-gold-glow transition-all duration-300 hover:-translate-y-1">
                   <div className="w-full sm:w-32 h-32 shrink-0 rounded-xl overflow-hidden border border-gold/20 relative shadow-sm">
                     <img
-                      src={item.image_url || item.img}
+                      src={resolveImageUrl(item.image_url || item.img, item.category?.name || "", item.name)}
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       loading="lazy"
