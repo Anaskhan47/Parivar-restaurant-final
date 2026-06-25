@@ -1,0 +1,6 @@
+api/backend/venv
+api/backend/__pycache__
+api/venv
+venv
+__pycache__
+.pytest_cache

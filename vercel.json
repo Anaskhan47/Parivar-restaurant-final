@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build && rm -rf node_modules \"Menu images\"",
   "installCommand": "npm install --legacy-peer-deps",
   "framework": "vite",
   "rewrites": [
@@ -22,5 +22,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "{node_modules/**,src/**,public/**,dist/**,Menu images/**,.vercel/**,.git/**}"
+    }
+  }
 }
