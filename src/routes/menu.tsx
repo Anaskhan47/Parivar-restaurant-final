@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ShoppingBag, Plus, Minus } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/cart";
+import { resolveImageUrl } from "@/utils/imageUrl";
 import logo from "@/assets/parivar-logo.png";
 
 

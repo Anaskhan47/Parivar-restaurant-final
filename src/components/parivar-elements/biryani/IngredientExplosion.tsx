@@ -34,8 +34,8 @@ export function IngredientExplosion() {
 
       tl.set(".parivar-flying-leg", {
         opacity: 1,
-        x: "-50%",
-        y: "-50%",
+        x: "-40%",
+        y: "-45%",
         rotate: -8,
         scale: 0.56,
       });
@@ -65,7 +65,7 @@ export function IngredientExplosion() {
         {
           // left: "58%",
           left: isMobile ? "58%" : "58%",
-          top: "37%",
+          top: "40%",
           rotate: -10,
           scale: 0.52,
           duration: 0.9,
@@ -98,7 +98,7 @@ export function IngredientExplosion() {
       <img
         src={legPiece}
         alt="Chicken leg piece"
-        className="parivar-flying-leg pointer-events-none absolute left-[56%] top-[36%] z-30 h-[340px] w-auto select-none drop-shadow-[0_30px_80px_oklch(0_0_0_/_0.34)] sm:left-[54%] sm:top-[34%] sm:h-[450px] lg:h-[560px]"
+        className="parivar-flying-leg pointer-events-none absolute left-[45%] top-[36%] z-30 h-[340px] w-auto select-none drop-shadow-[0_30px_80px_oklch(0_0_0_/_0.34)] sm:left-[54%] sm:top-[34%] sm:h-[450px] lg:h-[560px]"
         draggable={false}
       />
 

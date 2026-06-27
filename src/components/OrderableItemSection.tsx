@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/store/cart";
+import { resolveImageUrl } from "@/utils/imageUrl";
 import logo from "@/assets/parivar-logo.png";
 
 interface Item {
@@ -12,6 +13,9 @@ interface Item {
   price: number;
   image_url?: string;
   img?: string;
+  category?: {
+    name?: string;
+  };
   is_available?: boolean;
 }
 

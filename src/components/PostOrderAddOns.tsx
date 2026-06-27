@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Plus, Loader2, CheckCircle2 } from "lucide-react";
+import { resolveImageUrl } from "@/utils/imageUrl";
 import logo from "@/assets/parivar-logo.png";
 
 interface AddonItem {
@@ -11,6 +12,9 @@ interface AddonItem {
   price: number;
   image_url?: string;
   img?: string;
+  category?: {
+    name?: string;
+  };
   is_available?: boolean;
 }
 

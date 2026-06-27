@@ -13,7 +13,7 @@ export function BiryaniStory() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context((self) => {
-      const words = self.selector?.(".parivar-story-word") ?? [];
+      const words = (self.selector?.(".parivar-story-word") ?? []) as HTMLElement[];
 
       const tl = gsap.timeline({
         scrollTrigger: {

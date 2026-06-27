@@ -26,7 +26,8 @@ export function Hero() {
           autoPlay
           loop
           muted
-          className="w-full h-[60vh] md:h-screen object-cover scale-[1.02]"
+          controls= {false}
+          className="w-full h-[100vh] md:h-screen object-cover scale-[1.02]"
           width={1920}
           height={1080}
         />

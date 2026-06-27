@@ -36,7 +36,7 @@ export function Navbar() {
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed rounded-4xl mt-2 top-0 inset-x-0 z-[9999] transition-all duration-500 flex items-center px-6 md:px-10"
+        className="fixed rounded-4xl mt-2 ml-2 mr-2 top-0 inset-x-0 z-[9999] transition-all duration-500 flex items-center px-6 md:px-10"
         style={{
           height: "90px",
           background: scrolled ? "rgba(246, 232, 215, 0.25)" : "rgba(246, 232, 215, 0.12)",
@@ -45,10 +45,10 @@ export function Navbar() {
           borderBottom: "1px solid rgba(246, 232, 215, 0.15)",
         }}
       >
-        <nav className="w-full  flex items-center justify-between">
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+        <nav className="w-full flex items-center justify-between">
+          <div className="flex items-center gap-2  shrink-0">
             <Link to="/" hash="home" className="flex items-center">
-              <img src={logo} alt="Parivar Restaurant — Timeless Indian Flavours" className="h-16 md:h-[4.5rem] w-auto object-contain drop-shadow-sm" />
+              <img src={logo} alt="Parivar Restaurant — Timeless Indian Flavours" className="h-14 md:h-[4.5rem] w-auto object-contain drop-shadow-sm rounded-[50%]" />
             </Link>
             <HalalBadge className="h-20 md:h-[5.5rem]" />
           </div>
